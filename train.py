@@ -21,8 +21,8 @@ def build_parser():
     parser.add_argument("--device", dest="device", default="gpu")
 
     ##Loader option
-    parser.add_argument("--train_path", dest="train_path", default="data/train.csv")
-    parser.add_argument("--valid_path", dest="valid_path", default="data/test.csv")
+    parser.add_argument("--train_path", dest="train_path", default="source/train.csv")
+    parser.add_argument("--valid_path", dest="valid_path", default="source/test.csv")
     parser.add_argument("--max_length", dest="max_length", default=512, type=int)
     parser.add_argument("--save_path", dest="save_path", default="model")
 
