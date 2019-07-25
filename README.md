@@ -3,9 +3,16 @@ This is pytorch simple implementation of [Pre-training of Deep Bidirectional Tra
 Language Understanding (BERT)](https://arxiv.org/pdf/1810.04805.pdf) by using awesome [pytorch BERT library](https://github.com/huggingface/pytorch-transformers)
 
 ### Dataset
+1. IMDB(Internet Movie Database)
 To test model, I use a dataset of 50,000 movie reviews taken from IMDb. 
 It is divied into 'train', 'test' dataset and each data has 25,000 movie reviews and labels(positive, negetive).
 You can access to dataset with this [link](http://ai.stanford.edu/~amaas/data/sentiment/)
+
+2. Naver Movie review
+[link](https://github.com/e9t/nsmc/)
+
+3. KorQuAD(The Korean Question Answering Dataset)
+[link](https://korquad.github.io/)
 
 ### How to use it?
 Follow the example
