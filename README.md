@@ -31,6 +31,18 @@ There is a lot of options to check.
 python train.py --train_path source/train.csv --valid_path source/test.csv --batch_size 16 --gradient_accumulation_steps 4 --boost True 
 ```
 
+### Result
+Result with hyper parameter settings
+
+| BERT finetune | Max token Length | Best Epoch | train loss | valid loss | valid accuracy |
+|---------------|:----------------:|:----------:|:----------:|:----------:|:--------------:|
+| True          |        256       |     1      |   0.0169   |   0.0129   |     0.9181     |
+| True          |        512       |     1      |   0.0151   |   0.0112   |     0.9292     |
+| False         |        256       |     10     |   0.0289   |   0.0276   |     0.8027     |
+| False         |        512       |     10     |   0.0269   |   0.0259   |     0.8194     |
+
+### Comment
+Fintuning result is remarkable and stunning. But just using a BERT output(wihtout fintuning) and put it through a single linear layer is not enought to handle data.
 
 ### Reference
 
