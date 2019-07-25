@@ -202,6 +202,9 @@ class Trainer():
                                        boost=self.boost)
                 loss = self.crit(label_hat, label_id)
 
+                if self.gradient_accumulation_steps > 1:
+                    loss = loss / self.gradient_accumulation_steps
+
                 total_loss += float(loss)
                 total_count += int(label_id.size(0))
                 avg_loss = total_loss / total_count
