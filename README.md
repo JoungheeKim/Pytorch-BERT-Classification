@@ -45,8 +45,8 @@ Result with hyper parameter settings
 |  IMDB   |      bert-base-uncased       | True          |        512       |     1      |   0.0151   |   0.0112   |     0.9292     |
 |  IMDB   |      bert-base-uncased       | False         |        256       |     10     |   0.0289   |   0.0276   |     0.8027     |
 |  IMDB   |      bert-base-uncased       | False         |        512       |     10     |   0.0269   |   0.0259   |     0.8194     |
-|  Naver  | bert-base-multilingual-cased | False         |        512       |     4      |   0.0135   |   0.0199   |     0.8743     |
-|  Naver  |bert-base-multilingual-uncased| False         |        512       |     4      |   0.0126   |   0.0198   |     0.8743     |
+|  Naver  | bert-base-multilingual-cased | True          |        512       |     4      |   0.0135   |   0.0199   |     0.8743     |
+|  Naver  |bert-base-multilingual-uncased| True          |        512       |     4      |   0.0126   |   0.0198   |     0.8743     |
 
 
 ### Comment
