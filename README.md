@@ -9,10 +9,8 @@ It is divied into 'train', 'test' dataset and each data has 25,000 movie reviews
 You can access to dataset with this [link](http://ai.stanford.edu/~amaas/data/sentiment/)
 
 2. Naver Movie review
+It is well scrapped dataset from Naver movie review(Korean). 
 [link](https://github.com/e9t/nsmc/)
-
-3. KorQuAD(The Korean Question Answering Dataset)
-[link](https://korquad.github.io/)
 
 ### How to use it?
 Follow the example
@@ -41,12 +39,15 @@ python train.py --train_path source/train.csv --valid_path source/test.csv --bat
 ### Result
 Result with hyper parameter settings
 
-| BERT finetune | Max token Length | Best Epoch | train loss | valid loss | valid accuracy |
-|---------------|:----------------:|:----------:|:----------:|:----------:|:--------------:|
-| True          |        256       |     1      |   0.0169   |   0.0129   |     0.9181     |
-| True          |        512       |     1      |   0.0151   |   0.0112   |     0.9292     |
-| False         |        256       |     10     |   0.0289   |   0.0276   |     0.8027     |
-| False         |        512       |     10     |   0.0269   |   0.0259   |     0.8194     |
+| Dataset |        BERT pretrained       | BERT finetune | Max token Length | Best Epoch | train loss | valid loss | valid accuracy |
+|---------|:----------------------------:|:-------------:|:----------------:|:----------:|:----------:|:----------:|:--------------:|
+|  IMDB   |      bert-base-uncased       | True          |        256       |     1      |   0.0169   |   0.0129   |     0.9181     |
+|  IMDB   |      bert-base-uncased       | True          |        512       |     1      |   0.0151   |   0.0112   |     0.9292     |
+|  IMDB   |      bert-base-uncased       | False         |        256       |     10     |   0.0289   |   0.0276   |     0.8027     |
+|  IMDB   |      bert-base-uncased       | False         |        512       |     10     |   0.0269   |   0.0259   |     0.8194     |
+|  Naver  | bert-base-multilingual-cased | False         |        512       |     4      |   0.0135   |   0.0199   |     0.8743     |
+|  Naver  |bert-base-multilingual-uncased| False         |        512       |     4      |   0.0126   |   0.0198   |     0.8743     |
+
 
 ### Comment
 Fintuning result is remarkable and stunning. But just using a BERT output(wihtout fintuning) and put it through a single linear layer is not enought to handle data.
