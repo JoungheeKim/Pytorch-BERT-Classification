@@ -27,7 +27,7 @@ def build_parser():
     parser.add_argument("--save_path", dest="save_path", default="model")
 
     ##Model option
-    parser.add_argument("--bert_name", dest="bert_name", default="bert-base-uncased")
+    parser.add_argument("--bert_name", dest="bert_name", default="kobert") #bert-base-uncased
     parser.add_argument("--bert_finetuning", dest="bert_finetuning", default=False, type=bool)
     parser.add_argument("--dropout_p", dest="dropout_p", default=0.1, type=int)
 
@@ -36,8 +36,8 @@ def build_parser():
     parser.add_argument("--n_epochs", dest="n_epochs", default=10, type=int)
     parser.add_argument("--lr_main", dest="lr_main", default=0.00001, type=int)
     parser.add_argument("--lr", dest="lr", default=0.001, type=int)
-    parser.add_argument("--early_stop", dest="early_stop", default=2, type=int)
-    parser.add_argument("--batch_size", dest="batch_size", default=16, type=int)
+    parser.add_argument("--early_stop", dest="early_stop", default=1, type=int)
+    parser.add_argument("--batch_size", dest="batch_size", default=8, type=int)
     parser.add_argument("--gradient_accumulation_steps", dest="gradient_accumulation_steps", default=1, type=int)
     parser.add_argument("--num_class", dest="num_class", type=int)
 
@@ -78,8 +78,12 @@ def run(config):
     logging.debug(vars(config))
 
     logging.info("##################### Start Load BERT MODEL")
-    tokenizer = BertTokenizer.from_pretrained(config.bert_name)
-    bert = BertModel.from_pretrained(config.bert_name)
+    if config.bert_name == 'kobert':
+        from kobert_modified_utills import get_kobert_model_and_tokenizer
+        bert, tokenizer = get_kobert_model_and_tokenizer()
+    else:
+        tokenizer = BertTokenizer.from_pretrained(config.bert_name)
+        bert = BertModel.from_pretrained(config.bert_name)
     bert.to(config.device)
 
     ##load data loader
@@ -95,10 +99,12 @@ def run(config):
     logging.info("##################### class size : [" + str(num_class) + "]")
 
     #modified batch size
+    logging.info("##################### Accumulation batch size : [" + str(config.batch_size) + "]")
     config.batch_size = config.batch_size // config.gradient_accumulation_steps
     logging.info("##################### Modified batch size : [" + str(config.batch_size) + "]")
 
-    logging.info("##################### Load 'HAN' Model")
+
+    logging.info("##################### Load 'BERT Classifier' Model")
     model = MyClassifier(bert=bert,
                          num_class=num_class,
                          bert_finetuning=config.bert_finetuning,

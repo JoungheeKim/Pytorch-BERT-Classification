@@ -90,8 +90,10 @@ def convert_examples_to_features(data_list, label_list, tokenizer, max_length=51
         #  type_ids: 0   0   0   0  0     0 0
         #
         tokens = tokenizer.tokenize(data)
+
         _truncate_seq(tokens, max_length-2)
         tokens = ["[CLS]"] + tokens + ["[SEP]"]
+
         segment_ids = [0] * len(tokens)
         input_ids = tokenizer.convert_tokens_to_ids(tokens)
 

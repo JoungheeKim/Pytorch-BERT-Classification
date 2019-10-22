@@ -21,7 +21,7 @@ class MyClassifier(nn.Module):
 
     def ids_to_vector(self, input_ids, segment_ids=None, input_mask=None, boost=False):
 
-        if boost:
+        if boost and not self.bert_finetuning:
             return input_ids
 
         # input_ids : (B, D)
