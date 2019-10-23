@@ -47,7 +47,7 @@ Result with hyper parameter settings
 |  IMDB   |      bert-base-uncased       | False         |        512       |     10     |   0.0269   |   0.0259   |     0.8194     |
 |  Naver  | bert-base-multilingual-cased | True          |        512       |     4      |   0.0135   |   0.0199   |     0.8743     |
 |  Naver  |bert-base-multilingual-uncased| True          |        512       |     4      |   0.0126   |   0.0198   |     0.8743     |
-|  Naver  |            kobert            | True          |        512       |     2      |   0.0177   |   0.0343   |     0.9013     |
+|  Naver  |            kobert            | True          |        512       |     2      |   0.0145   |   0.0163   |     0.8961     |
 
 
 ### Comment
